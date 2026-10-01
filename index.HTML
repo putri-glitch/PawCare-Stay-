@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawCare Stay - Tempat Nyaman Saat Pemilik Pergi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'soft-yellow': '#FEF9C3', // Soft yellow background
+                        'warm-yellow': '#FDE047', // Primary warm yellow
+                        'accent-yellow': '#EAB308', // Darker yellow for text/accents
+                        'sky-light': '#F0F9FF',   // Soft sky blue bg
+                        'sky-soft': '#BAE6FD',    // Accent soft blue
+                        'sky-brand': '#0284C7',   // Deep sky blue button/brand
+                        'sky-dark': '#0369A1',    // Dark sky blue hover
+                        'slate-dark': '#1E293B',  // Text heading
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAFAFA;
+        }
+        .gradient-soft {
+            background: linear-gradient(135deg, #FEF9C3 0%, #E0F2FE 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+</head>
+<body class="text-slate-700 antialiased selection:bg-sky-soft selection:text-sky-dark">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-sky-100 shadow-sm transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & Brand Name -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="relative w-12 h-12 rounded-2xl overflow-hidden bg-gradient-to-tr from-warm-yellow to-sky-soft p-0.5 shadow-md group-hover:scale-105 transition-transform">
+                        <!-- Drive Custom Logo Image with Fallback Icon -->
+                        <img id="brandLogoImg" 
+                             src="https://lh3.googleusercontent.com/d/1iBipiTUkSgmxbkwgxWmb26buNqAai9uK=s200" 
+                             alt="PawCare Stay Logo" 
+                             class="w-full h-full object-cover rounded-[14px]"
+                             onerror="this.onerror=null; this.src='https://placehold.co/100x100/FDE047/0284C7?text=PawCare'; document.getElementById('fallbackIcon').classList.remove('hidden');">
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold tracking-tight text-slate-800 group-hover:text-sky-brand transition-colors">
+                            PawCare <span class="text-sky-brand">Stay</span>
+                        </span>
+                        <p class="text-[10px] font-semibold tracking-wider text-amber-600 uppercase">Paramedic Pet Boarding</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <a href="#home" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-brand hover:bg-sky-light transition">Home</a>
+                    <a href="#tentang" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-brand hover:bg-sky-light transition">Tentang Kami</a>
+                    <a href="#layanan" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-brand hover:bg-sky-light transition">Layanan</a>
+                    <a href="#kalkulator" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-brand hover:bg-sky-light transition">Estimasi Biaya</a>
+                    <a href="#edukasi" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-brand hover:bg-sky-light transition">Edukasi</a>
+                    <a href="#kontak" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-brand hover:bg-sky-light transition">Kontak</a>
+                </nav>
+
+                <!-- Direct WhatsApp CTA Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="https://wa.me/6288245836604?text=Halo%20PawCare%20Stay,%20saya%20ingin%20bertanya%20mengenai%20layanan%20penitipan%20hewan" 
+                       target="_blank" 
+                       rel="noopener"
+                       class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>0882-4583-6604</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="p-2 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 shadow-xl">
+            <a href="#home" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-sky-light hover:text-sky-brand">Home</a>
+            <a href="#tentang" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-sky-light hover:text-sky-brand">Tentang Kami</a>
+            <a href="#layanan" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-sky-light hover:text-sky-brand">Layanan</a>
+            <a href="#kalkulator" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-sky-light hover:text-sky-brand">Estimasi Biaya</a>
+            <a href="#edukasi" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-sky-light hover:text-sky-brand">Edukasi Kesehatan</a>
+            <a href="#kontak" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-sky-light hover:text-sky-brand">Kontak & Lokasi</a>
+            <div class="pt-3 border-t border-slate-100">
+                <a href="https://wa.me/6288245836604?text=Halo%20PawCare%20Stay,%20saya%20ingin%20konsultasi%20penitipan" 
+                   target="_blank"
+                   class="flex items-center justify-center gap-2 bg-emerald-500 text-white font-bold py-3 rounded-xl shadow w-full">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Hubungi via WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24 gradient-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-200/70 border border-amber-300 text-amber-900 text-xs sm:text-sm font-semibold shadow-sm">
+                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        <i class="fa-solid fa-heart text-amber-600"></i>
+                        <span>Layanan Penitipan & Paramedik Veteriner Sinjai</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        Tempat Nyaman Saat <br class="hidden sm:inline">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-brand via-sky-dark to-amber-600">Pemilik Bepergian</span> 🐾
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        PawCare Stay memberikan perawatan terbaik untuk kucing dan anjing kesayangan Anda. Dengan standar sanitasi tinggi, pakan teratur, serta pemantauan kesehatan profesional oleh tenaga Paramedik Veteriner.
+                    </p>
+
+                    <!-- Information Badges -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-left">
+                        <div class="flex items-center gap-3 p-3 bg-white/80 rounded-xl border border-sky-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-lg bg-sky-soft/40 flex items-center justify-center text-sky-brand font-bold">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-xs font-semibold text-slate-500 uppercase">Check-In / Out</h2>
+                                <p class="text-xs font-bold text-slate-800">Senin - Sabtu: 08.00 - 21.00 WITA</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-white/80 rounded-xl border border-amber-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-lg bg-warm-yellow/40 flex items-center justify-center text-amber-800 font-bold">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-xs font-semibold text-slate-500 uppercase">Lokasi Layanan</h2>
+                                <p class="text-xs font-bold text-slate-800">Kab. Sinjai, Jl. Persatuan Raya (Bikeru)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="https://wa.me/6288245836604?text=Halo%20PawCare%20Stay,%20saya%20ingin%20booking%20tempat%20penitipan%20hewan" 
+                           target="_blank"
+                           class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-sky-brand hover:bg-sky-dark text-white font-bold px-7 py-3.5 rounded-2xl shadow-lg hover:shadow-sky-500/30 transition-all duration-200 transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-calendar-check text-lg"></i>
+                            <span>Booking Tempat Sekarang</span>
+                        </a>
+                        <a href="#layanan" 
+                           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-amber-50 text-slate-700 font-semibold px-6 py-3.5 rounded-2xl border border-slate-200 shadow-sm hover:border-amber-300 transition">
+                            <i class="fa-solid fa-shield-dog text-amber-500"></i>
+                            <span>Lihat Layanan Kami</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Hero Image Grid -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Background Glow Blob -->
+                        <div class="absolute -top-6 -right-6 w-72 h-72 bg-warm-yellow/50 rounded-full blur-3xl -z-10"></div>
+                        <div class="absolute -bottom-6 -left-6 w-72 h-72 bg-sky-soft/60 rounded-full blur-3xl -z-10"></div>
+
+                        <!-- Main Hero Card Image -->
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+                            <img src="https://lh3.googleusercontent.com/d/1m1NGwsUFjqWOv5ND_uivWwOh8cJ6IH-v=s1000" 
+                                 alt="Anjing dan Kucing Sehat PawCare Stay" 
+                                 class="w-full h-[380px] sm:h-[420px] object-cover"
+                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=1000&q=80';">
+                            
+                            <!-- Floating Badge -->
+                            <div class="absolute bottom-4 left-4 right-4 p-4 glass-card rounded-2xl shadow-lg flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-lg shadow">
+                                        <i class="fa-solid fa-camera-retro"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-slate-900">Update Real-Time</p>
+                                        <p class="text-[11px] text-slate-600">Foto & Video dikirim setiap hari</p>
+                                    </div>
+                                </div>
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full">Aktif</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Kami Section -->
+    <section id="tentang" class="py-16 sm:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Image Showcase -->
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="relative grid grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <img src="https://lh3.googleusercontent.com/d/1plluUXvCYjPPc6VgZj473SMgQO6RHsRL=s1000" 
+                                 alt="Steril dan Sanitasi" class="rounded-2xl shadow-md h-48 w-full object-cover"
+                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80';">
+                            <div class="bg-amber-100/80 p-5 rounded-2xl border border-amber-200 text-center">
+                                <span class="block text-2xl font-extrabold text-amber-900">100%</span>
+                                <span class="text-xs font-semibold text-amber-800 uppercase tracking-wider">Steril & Sanitasi</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4 pt-6">
+                            <div class="bg-sky-100/80 p-5 rounded-2xl border border-sky-200 text-center">
+                                <span class="block text-2xl font-extrabold text-sky-900">24/7</span>
+                                <span class="text-xs font-semibold text-sky-800 uppercase tracking-wider">Pemantauan Hewan</span>
+                            </div>
+                            <img src="https://lh3.googleusercontent.com/d/1tA8pnB5t0dWDVeA1Jg-hhqmiuA1pQWYc=s1000" 
+                                 alt="24/7 Pemantauan Kondisi Hewan" class="rounded-2xl shadow-md h-48 w-full object-cover"
+                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80';">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-sky-100 text-sky-800 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-paw"></i> Profil PawCare Stay
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Penitipan Hewan Mengutamakan Kenyamanan, Kebersihan & Kesehatan Anabul
+                    </h2>
+
+                    <p class="text-slate-600 leading-relaxed">
+                        <strong>PawCare Stay</strong> didirikan sebagai solusi terpercaya bagi para pemilik hewan peliharaan di Kabupaten Sinjai dan sekitarnya yang hendak bepergian, bekerja, atau berlibur tanpa khawatir meninggalkan anabul kesayangan.
+                    </p>
+
+                    <p class="text-slate-600 leading-relaxed">
+                        Kami menerapkan standar perawatan intensif yang disesuaikan dengan prinsip medis kesehatan hewan, mencakup pemberian nutrisi terjadwal, kebersihan area tinggal yang rutin didisinfeksi, pemantauan kondisi fisik, serta penanganan penuh kasih sayang.
+                    </p>
+
+                    <!-- Feature Pillars -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-sm">Nutrisi Sesuai Rekomendasi</h3>
+                                <p class="text-xs text-slate-500">Pola makan tepat waktu disesuaikan dengan diet hewan.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-sm">Sanitasi Bebas Parasit</h3>
+                                <p class="text-xs text-slate-500">Kandang dibersihkan dan didisinfeksi secara berkala.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-sm">Pemantauan Kesehatan</h3>
+                                <p class="text-xs text-slate-500">Pemeriksaan fisik aktif untuk memastikan hewan tidak stres.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-sm">Laporan Berkala ke Pemilik</h3>
+                                <p class="text-xs text-slate-500">Kirim foto & video kondisi anabul langsung via WA.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Operational Hours Notice Card -->
+                    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-warm-yellow text-amber-900 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-clock font-bold"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-amber-900 text-sm">Jam Operasional Check-in / Check-out</h3>
+                            <p class="text-xs text-amber-800 font-medium">Senin - Sabtu: <span class="font-bold text-amber-950">08.00 - 21.00 WITA</span> (Minggu & Hari Libur dengan Perjanjian)</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Utama Section (6 Features with Real Cat & Dog Photos) -->
+    <section id="layanan" class="py-16 sm:py-20 bg-sky-light/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-200/80 text-amber-900 text-xs font-bold uppercase tracking-wider">
+                    <i class="fa-solid fa-concierge-bell"></i> Layanan Perawatan
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                    Fasilitas Lengkap untuk Kenyamanan Anabul Anda
+                </h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Seluruh layanan dirancang khusus untuk memastikan hewan peliharaan tetap sehat, ceria, dan merasa aman seperti di rumah sendiri.
+                </p>
+            </div>
+
+            <!-- 6 Core Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1: Penitipan Mingguan & Bulanan -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80" 
+                             alt="Penitipan Mingguan dan Bulanan Kucing Anjing" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-sky-brand text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                            Favorite
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center gap-2 text-sky-brand mb-2">
+                                <i class="fa-solid fa-house-chimney-window"></i>
+                                <span class="text-xs font-bold uppercase">Ruang Nyaman & Steril</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Penitipan Mingguan & Bulanan</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Akomodasi jangka pendek maupun panjang dengan pendingin/ventilasi udara yang sejuk, bebas stres, serta terpisah antara kucing dan anjing.
+                            </p>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-check text-emerald-500"></i> Harian / Mingguan / Bulanan</span>
+                            <a href="#kalkulator" class="text-sky-brand font-bold hover:underline">Cek Biaya &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Pemberian Makan & Minum Terjadwal -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=800&q=80" 
+                             alt="Pemberian Makan dan Minum Terjadwal" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center gap-2 text-amber-600 mb-2">
+                                <i class="fa-solid fa-bowl-food"></i>
+                                <span class="text-xs font-bold uppercase">Nutrisi Terjaga</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Pemberian Makan & Minum Terjadwal</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Jadwal konsumsi pakan disesuaikan persis dengan kebiasaan di rumah. Air minum matang/filter selalu tersedia dan diganti rutin.
+                            </p>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-check text-emerald-500"></i> Menu Wet Food & Dry Food</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Kebersihan & Sanitasi Kandang -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/d/1plluUXvCYjPPc6VgZj473SMgQO6RHsRL=s1000" 
+                             alt="Kebersihan dan Sanitasi Kandang Hewan" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=800&q=80';">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center gap-2 text-emerald-600 mb-2">
+                                <i class="fa-solid fa-pump-soap"></i>
+                                <span class="text-xs font-bold uppercase">Higiene Maksimal</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Kebersihan & Sanitasi Kandang</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Kandang dan pasir/litter box dibersihkan minimal 2 kali sehari menggunakan disinfektan aman hewan untuk mencegah kuman dan kutil.
+                            </p>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-check text-emerald-500"></i> Bebas Bau & Virus</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: Pemantauan Kesehatan Berkala -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=800&q=80" 
+                             alt="Pemantauan Kesehatan Berkala Paramedik Veteriner" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center gap-2 text-sky-brand mb-2">
+                                <i class="fa-solid fa-stethoscope"></i>
+                                <span class="text-xs font-bold uppercase">Standar Paramedik</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Pemantauan Kesehatan Berkala</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Pengawasan aktif terhadap selera makan, tingkat keaktifan, feses, dan kondisi fisik umum oleh tenaga Paramedik Veteriner.
+                            </p>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-check text-emerald-500"></i> Penanganan Cepat Bila Lemas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 5: Grooming & Perawatan Dasar -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=800&q=80" 
+                             alt="Grooming dan Perawatan Dasar Kucing Anjing" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center gap-2 text-amber-600 mb-2">
+                                <i class="fa-solid fa-scissors"></i>
+                                <span class="text-xs font-bold uppercase">Pilihan Tambahan</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Grooming & Perawatan Dasar</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Layanan memandikan, pembersihan telinga, pemotongan kuku, dan pembersihan bulu agar anabul senantiasa segar dan wangi.
+                            </p>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-check text-emerald-500"></i> Opsi Rp 45.000 / Sesi</span>
+                            <a href="#kalkulator" class="text-amber-600 font-bold hover:underline">Hitung Total &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 6: Update Foto & Video Real-Time -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/d/1i8mF1-f9BQBQykcTD6_8uggUJgZrRg6z=s1000" 
+                             alt="Update Foto dan Video Real Time Kucing Anjing" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=800&q=80';">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center gap-2 text-indigo-600 mb-2">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                                <span class="text-xs font-bold uppercase">Ketenangan Pemilik</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Update Foto & Video Real-Time</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Pengiriman dokumentasi kegiatan anabul (saat makan, bermain, dan istirahat) secara langsung ke WhatsApp pemilik setiap hari.
+                            </p>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-check text-emerald-500"></i> Dikirim Setiap Hari via WA</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Kalkulator & Estimasi Biaya Section (Exact user specs included) -->
+    <section id="kalkulator" class="py-16 sm:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-amber-50 via-white to-sky-50 rounded-3xl border border-amber-200/80 p-6 sm:p-10 shadow-xl">
+                
+                <div class="grid lg:grid-cols-12 gap-10 items-center">
+                    
+                    <!-- Left Pricing Overview -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-warm-yellow/60 text-amber-900 text-xs font-bold uppercase">
+                            <i class="fa-solid fa-calculator"></i> Transparansi Biaya
+                        </div>
+                        
+                        <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">
+                            Estimasi Biaya Penitipan & Perawatan PawCare Stay
+                        </h2>
+
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Hitung rincian biaya penitipan hewan Anda sesuai kebutuhan durasi harian, mingguan, maupun paket hemat bulanan.
+                        </p>
+
+                        <!-- Standard Pricing Reference List -->
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 shadow-sm text-sm">
+                                <span class="text-slate-700 font-medium">Tarif Dasar Harian</span>
+                                <span class="font-bold text-slate-900">Rp 90.000 <span class="text-xs text-slate-500 font-normal">/ hari</span></span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 shadow-sm text-sm">
+                                <span class="text-slate-700 font-medium">Tarif Standar Mingguan (7 hari)</span>
+                                <span class="font-bold text-slate-900">Rp 630.000 <span class="text-xs text-slate-500 font-normal">/ minggu</span></span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-sky-50 border border-sky-200 shadow-sm text-sm">
+                                <span class="text-sky-900 font-bold">Paket Promo Bulanan (1 Bulan)</span>
+                                <span class="font-extrabold text-sky-700">Rp 2.100.000 <span class="text-xs text-emerald-600 font-bold">(Hemat Rp 600rb)</span></span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-amber-50 border border-amber-200 shadow-sm text-sm">
+                                <span class="text-amber-900 font-medium">Opsi Grooming Dasar</span>
+                                <span class="font-bold text-amber-800">Rp 45.000 <span class="text-xs text-slate-500 font-normal">/ sesi</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Highlight Box for 1 Month Example -->
+                        <div class="p-4 rounded-2xl bg-gradient-to-r from-warm-yellow/40 to-sky-soft/40 border border-amber-300 text-xs space-y-1">
+                            <p class="font-bold text-slate-900 flex items-center gap-1.5">
+                                <i class="fa-solid fa-star text-amber-600"></i> Simulasi Rekomendasi Paket 1 Bulan:
+                            </p>
+                            <p class="text-slate-700">
+                                Total Penitipan 1 Bulan (Rp 2.100.000) + Grooming & Perawatan Lengkap Berkala (&plusmn;4 Sesi Grooming) = <span class="font-extrabold text-slate-900 underline">Perkiraan Biaya Total Rp 2.298.000</span>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Interactive Form / Calculator -->
+                    <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-sliders text-sky-brand"></i> Kalkulator Simulasi Biaya
+                        </h3>
+
+                        <form id="calcForm" onsubmit="event.preventDefault();" class="space-y-6">
+                            
+                            <!-- Duration Selector -->
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-2">
+                                    Pilih Paket / Durasi Penitipan
+                                </label>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <button type="button" onclick="setPreset('daily')" id="btn-daily" class="preset-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border border-slate-300 hover:border-sky-brand transition">
+                                        Harian
+                                    </button>
+                                    <button type="button" onclick="setPreset('weekly')" id="btn-weekly" class="preset-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border border-slate-300 hover:border-sky-brand transition">
+                                        Mingguan (7 Hari)
+                                    </button>
+                                    <button type="button" onclick="setPreset('monthly')" id="btn-monthly" class="preset-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border border-sky-brand bg-sky-light text-sky-brand shadow-sm">
+                                        Bulanan (30 Hari)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Input Jumlah Hari -->
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <label for="daysInput" class="text-xs font-bold text-slate-700 uppercase">Jumlah Hari Penitipan</label>
+                                    <span class="text-sm font-extrabold text-sky-brand" id="daysCountText">30 Hari</span>
+                                </div>
+                                <input type="range" id="daysInput" min="1" max="60" value="30" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-sky-brand" oninput="updateCalculator()">
+                                <div class="flex justify-between text-[11px] text-slate-400 mt-1 font-medium">
+                                    <span>1 Hari</span>
+                                    <span>14 Hari</span>
+                                    <span>30 Hari (Promo Bulanan)</span>
+                                    <span>60 Hari</span>
+                                </div>
+                            </div>
+
+                            <!-- Opsi Grooming -->
+                            <div class="pt-2 border-t border-slate-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <label class="text-xs font-bold uppercase text-slate-700">
+                                        Tambah Grooming Dasar (Rp 45.000 / Sesi)
+                                    </label>
+                                    <span class="text-sm font-extrabold text-amber-700" id="groomingCountText">4 Sesi</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button type="button" onclick="changeGrooming(-1)" class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition text-lg">-</button>
+                                    <input type="number" id="groomingInput" min="0" max="15" value="4" readonly class="w-16 text-center font-bold text-slate-800 bg-slate-50 border border-slate-300 rounded-xl py-2">
+                                    <button type="button" onclick="changeGrooming(1)" class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition text-lg">+</button>
+                                    <span class="text-xs text-slate-500 font-normal">Sesi grooming memandikan & pembersihan.</span>
+                                </div>
+                            </div>
+
+                            <!-- Rincian Output & Total -->
+                            <div class="bg-slate-900 text-white p-5 rounded-2xl space-y-3 shadow-inner">
+                                <div class="flex justify-between items-center text-xs text-slate-300">
+                                    <span>Biaya Penitipan (<span id="summaryDays">30 Hari</span>):</span>
+                                    <span class="font-semibold text-white" id="summaryStayPrice">Rp 2.100.000</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs text-slate-300">
+                                    <span>Biaya Grooming (<span id="summaryGrooming">4 Sesi</span>):</span>
+                                    <span class="font-semibold text-white" id="summaryGroomingPrice">Rp 180.000</span>
+                                </div>
+                                <div id="discountNotice" class="text-[11px] text-emerald-400 font-medium">
+                                    <i class="fa-solid fa-tag"></i> Paket promo bulanan diaktifkan (Diskon hemat Rp 600.000)!
+                                </div>
+                                <div class="pt-3 border-t border-slate-800 flex justify-between items-end">
+                                    <div>
+                                        <p class="text-[11px] uppercase tracking-wider text-amber-400 font-bold">Perkiraan Biaya Total</p>
+                                        <p class="text-2xl sm:text-3xl font-black text-amber-300" id="grandTotalPrice">Rp 2.280.000</p>
+                                    </div>
+                                    <a id="waCalcBtn" 
+                                       href="#" 
+                                       target="_blank"
+                                       class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow inline-flex items-center gap-2 transition">
+                                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                                        <span>Pesan Sesuai Estimasi</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Edukasi Kesehatan Hewan Section -->
+    <section id="edukasi" class="py-16 sm:py-20 bg-sky-light/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-200/80 text-sky-900 text-xs font-bold uppercase tracking-wider">
+                    <i class="fa-solid fa-graduation-cap"></i> Edukasi Kesehatan Hewan
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                    Panduan & Tips Perawatan Anabul Kesayangan
+                </h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Informasi praktis seputar pemeliharaan hewan peliharaan agar tetap sehat, aktif, dan terhindar dari stres.
+                </p>
+            </div>
+
+            <!-- Articles Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Article 1 -->
+                <article class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=800&q=80" 
+                         alt="Mencegah Stres Kucing Anjing" class="h-48 w-full object-cover">
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+                        <div>
+                            <span class="text-[11px] font-bold text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full">Perilaku Hewan</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-2 hover:text-sky-brand transition">
+                                Cara Mencegah Stres pada Kucing & Anjing Saat Ditinggal Bepergian
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mt-2 line-clamp-3">
+                                Perubahan lingkungan dan ketidakhadiran pemilik dapat memicu kecemasan pemisahan (separation anxiety). Kenali gejalanya dan cara menciptakan suasana aman.
+                            </p>
+                        </div>
+                        <button onclick="openArticle('Mencegah Stres Saat Ditinggal Bepergian', 'Kucing dan anjing merupakan hewan yang terbiasa dengan rutinitas. Saat pemilik bepergian, anabul dapat mengalami stres berupa penurunan nafsu makan, menjadi pasif, atau terus mengeong/menggonggong.<br><br><b>Langkah Pencegahan:</b><br>1. Bawalah selimut atau mainan kesayangan yang memiliki aroma pemilik ke tempat penitipan.<br>2. Pastikan jadwal makan dan jenis makanan tetap konsisten.<br>3. Pilihlah tempat penitipan dengan sirkulasi udara baik dan pengawasan yang teratur seperti PawCare Stay.')" 
+                                class="text-sky-brand text-xs font-bold flex items-center gap-1 hover:underline pt-2">
+                            <span>Baca Selengkapnya</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80" 
+                         alt="Pentingnya Nutrisi Terjadwal Hewan Peliharaan" class="h-48 w-full object-cover">
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+                        <div>
+                            <span class="text-[11px] font-bold text-sky-700 bg-sky-100 px-2.5 py-1 rounded-full">Nutrisi & Diet</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-2 hover:text-sky-brand transition">
+                                Pentingnya Nutrisi Terjadwal & Hidrasi Cukup Bagi Kesehatan Anabul
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mt-2 line-clamp-3">
+                                Pola makan yang teratur menjaga fungsi pencernaan, pencegahan dehidrasi, serta kestabilan energi harian hewan peliharaan Anda.
+                            </p>
+                        </div>
+                        <button onclick="openArticle('Pentingnya Nutrisi Terjadwal & Hidrasi Cukup', 'Pemberian pakan yang tidak teratur dapat memicu gangguan pencernaan seperti gastritis atau muntah kuning pada kucing dan anjing.<br><br><b>Poin Penting Nutrisi:</b><br>1. Berikan makanan sesuai porsi takaran berdasarkan berat badan.<br>2. Sediakan air bersih yang selalu diperbarui setiap hari untuk mencegah gangguan ginjal dan saluran kemih (FLUTD).<br>3. Kombinasikan dry food dan wet food untuk memenuhi kadar hidrasi tubuh.')" 
+                                class="text-sky-brand text-xs font-bold flex items-center gap-1 hover:underline pt-2">
+                            <span>Baca Selengkapnya</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=800&q=80" 
+                         alt="Sanitasi Kandang Bebas Parasit" class="h-48 w-full object-cover">
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+                        <div>
+                            <span class="text-[11px] font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full">Sanitasi & Kebersihan</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-2 hover:text-sky-brand transition">
+                                Standar Sanitasi Kandang Ideal Mencegah Infeksi Kulit & Jamur
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mt-2 line-clamp-3">
+                                Kandang yang bersih dan kering adalah kunci utama terhindar dari jamur (ringworm), pinjal, kutu, serta infeksi pencernaan.
+                            </p>
+                        </div>
+                        <button onclick="openArticle('Standar Sanitasi Kandang Ideal', 'Sanitasi area penitipan sangat menentukan kesehatan fisik anabul. Bakteri dan jamur berkembang sangat cepat pada lingkungan yang lembab dan kotor.<br><br><b>Langkah Sanitasi Rutin:</b><br>1. Pembersihan kotoran (litter box/pad) secara real-time.<br>2. Penggunaan disinfektan ramah hewan (non-toxic).<br>3. Pencucian wadah makan dan minum secara berkala dengan sabun antiparasit.')" 
+                                class="text-sky-brand text-xs font-bold flex items-center gap-1 hover:underline pt-2">
+                            <span>Baca Selengkapnya</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Kontak & Lokasi Section -->
+    <section id="kontak" class="py-16 sm:py-20 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12">
+                
+                <!-- Left Info Details -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase">
+                        <i class="fa-solid fa-address-book"></i> Hubungi Kami
+                    </div>
+
+                    <h2 class="text-3xl font-extrabold text-slate-900">
+                        Siap Mempercayakan Anabul Anda di PawCare Stay?
+                    </h2>
+
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Silakan hubungi kami melalui WhatsApp untuk konsultasi, reservasi jadwal penitipan, atau pertanyaan lebih lanjut seputar layanan kami.
+                    </p>
+
+                    <!-- Detail Cards -->
+                    <div class="space-y-4 pt-2">
+                        
+                        <!-- Address -->
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                            <div class="w-12 h-12 rounded-xl bg-amber-200/80 text-amber-900 flex items-center justify-center shrink-0 text-xl font-bold">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs font-bold uppercase text-slate-500">Alamat Layanan</h3>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">Kabupaten Sinjai</p>
+                                <p class="text-xs text-slate-600">JL. Persatuan Raya (Bikeru), Sinjai, Sulawesi Selatan.</p>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp -->
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-emerald-50 border border-emerald-200">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center shrink-0 text-xl font-bold shadow">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs font-bold uppercase text-emerald-700">Nomor WhatsApp Resmi</h3>
+                                <p class="text-base font-extrabold text-emerald-950 mt-0.5">0882-4583-6604</p>
+                                <a href="https://wa.me/6288245836604" target="_blank" class="text-xs font-bold text-emerald-700 hover:underline inline-flex items-center gap-1">
+                                    <span>Klik untuk Chat Langsung</span> &rarr;
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Operational Hours -->
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-sky-50 border border-sky-200">
+                            <div class="w-12 h-12 rounded-xl bg-sky-soft text-sky-900 flex items-center justify-center shrink-0 text-xl font-bold">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs font-bold uppercase text-sky-800">Jam Operasional Check-in / Out</h3>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">Senin - Sabtu: 08.00 - 21.00 WITA</p>
+                                <p class="text-xs text-slate-500">*Minggu / Hari Libur dengan Perjanjian Terlebih Dahulu.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right Quick Booking Form via WhatsApp -->
+                <div class="lg:col-span-7 bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Formulir Reservasi Cepat</h3>
+                    <p class="text-xs text-slate-500 mb-6">Isi formulir ini untuk langsung terhubung dengan WhatsApp PawCare Stay.</p>
+
+                    <form id="bookingForm" onsubmit="sendBookingWA(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="ownerName" class="block text-xs font-bold uppercase text-slate-700 mb-1">Nama Pemilik *</label>
+                                <input type="text" id="ownerName" required placeholder="Contoh: Andi Rizky" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-sky-brand focus:ring-1 focus:ring-sky-brand">
+                            </div>
+                            <div>
+                                <label for="petType" class="block text-xs font-bold uppercase text-slate-700 mb-1">Jenis Hewan Peliharaan *</label>
+                                <select id="petType" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-sky-brand focus:ring-1 focus:ring-sky-brand">
+                                    <option value="Kucing">Kucing 🐱</option>
+                                    <option value="Anjing">Anjing 🐶</option>
+                                    <option value="Lainnya">Lainnya 🐾</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="startDate" class="block text-xs font-bold uppercase text-slate-700 mb-1">Rencana Tanggal Check-In *</label>
+                                <input type="date" id="startDate" required class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-sky-brand focus:ring-1 focus:ring-sky-brand">
+                            </div>
+                            <div>
+                                <label for="durationSelect" class="block text-xs font-bold uppercase text-slate-700 mb-1">Estimasi Durasi *</label>
+                                <select id="durationSelect" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-sky-brand focus:ring-1 focus:ring-sky-brand">
+                                    <option value="1-3 Hari">1 - 3 Hari (Harian)</option>
+                                    <option value="1 Minggu (7 Hari)">1 Minggu / 7 Hari (Rp 630.000)</option>
+                                    <option value="1 Bulan (30 Hari)">1 Bulan / Promo Promo (Rp 2.100.000)</option>
+                                    <option value="Lainnya">Custom / Diskusi via Chat</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="groomingAddon" class="block text-xs font-bold uppercase text-slate-700 mb-1">Tambah Layanan Grooming Dasar?</label>
+                            <select id="groomingAddon" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-sky-brand focus:ring-1 focus:ring-sky-brand">
+                                <option value="Tidak Perlu">Tidak, hanya penitipan</option>
+                                <option value="Ya, 1x Grooming Dasar (+Rp 45.000)">Ya, 1x Grooming Dasar (+Rp 45.000)</option>
+                                <option value="Ya, Grooming Berkala (Paket 4x)">Ya, Grooming Berkala (Paket 4x)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="notes" class="block text-xs font-bold uppercase text-slate-700 mb-1">Catatan Khusus (Opsional)</label>
+                            <textarea id="notes" rows="3" placeholder="Contoh: Kucing saya sensitif makanan tertentu, mohon diperhatikan..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-sky-brand focus:ring-1 focus:ring-sky-brand"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-lg transition duration-200 flex items-center justify-center gap-2 text-base">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Kirim Reservasi ke WhatsApp</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-900 text-slate-300 pt-12 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+                
+                <!-- Col 1: Brand -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-warm-yellow flex items-center justify-center text-amber-900 font-extrabold">
+                            🐾
+                        </div>
+                        <span class="text-xl font-extrabold text-white">PawCare <span class="text-sky-400">Stay</span></span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Tempat Nyaman Saat Pemilik Pergi. Layanan penitipan hewan terpercaya di Kabupaten Sinjai.
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h3 class="text-xs font-bold uppercase text-white tracking-wider mb-4">Navigasi Halaman</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" class="hover:text-amber-300 transition">Home</a></li>
+                        <li><a href="#tentang" class="hover:text-amber-300 transition">Tentang Kami</a></li>
+                        <li><a href="#layanan" class="hover:text-amber-300 transition">Layanan Perawatan</a></li>
+                        <li><a href="#kalkulator" class="hover:text-amber-300 transition">Estimasi Biaya</a></li>
+                        <li><a href="#edukasi" class="hover:text-amber-300 transition">Edukasi Kesehatan</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Layanan -->
+                <div>
+                    <h3 class="text-xs font-bold uppercase text-white tracking-wider mb-4">Fasilitas & Layanan</h3>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li>Penitipan Mingguan & Bulanan</li>
+                        <li>Pemberian Makan Terjadwal</li>
+                        <li>Kebersihan & Sanitasi Kandang</li>
+                        <li>Pemantauan Kesehatan Berkala</li>
+                        <li>Grooming & Perawatan Dasar</li>
+                        <li>Update Foto/Video Real-Time</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Kontak & Operasional -->
+                <div>
+                    <h3 class="text-xs font-bold uppercase text-white tracking-wider mb-4">Informasi Operasional</h3>
+                    <p class="text-xs text-slate-400 mb-1"><strong>Lokasi:</strong> Kab. Sinjai, JL. Persatuan raya (Bikeru)</p>
+                    <p class="text-xs text-slate-400 mb-1"><strong>WhatsApp:</strong> 0882-4583-6604</p>
+                    <p class="text-xs text-amber-400 font-semibold mt-2"><strong>Jam Check-in/Out:</strong><br>Senin - Sabtu: 08.00 - 21.00 WITA</p>
+                </div>
+
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>&copy; 2026 PawCare Stay. All Rights Reserved.</p>
+                <p>Program Studi Paramedik Veteriner - Kabupaten Sinjai</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6288245836604?text=Halo%20PawCare%20Stay,%20saya%20ingin%20tanya%20layanan%20penitipan" 
+       target="_blank" 
+       rel="noopener"
+       aria-label="Chat via WhatsApp"
+       class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-3xl transition-transform hover:scale-110 group">
+        <i class="fa-brands fa-whatsapp"></i>
+        <!-- Tooltip -->
+        <span class="absolute right-16 top-2.5 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+            Chat WhatsApp
+        </span>
+    </a>
+
+    <!-- Article Modal Viewer -->
+    <div id="articleModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeArticleModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalBadge" class="inline-block px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">
+                Artikel Edukasi
+            </div>
+            <h3 id="modalTitle" class="text-2xl font-bold text-slate-900">Judul Artikel</h3>
+            <div id="modalBody" class="text-sm text-slate-600 leading-relaxed space-y-3 pt-2">
+                <!-- Dynamic Article Content -->
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex justify-end">
+                <button onclick="closeArticleModal()" class="bg-sky-brand text-white font-bold px-5 py-2.5 rounded-xl text-sm hover:bg-sky-dark transition">
+                    Tutup Artikel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Mobile Menu Toggle Functionality ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile drawer when clicking a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // --- Interactive Pricing Calculator ---
+        const daysInput = document.getElementById('daysInput');
+        const groomingInput = document.getElementById('groomingInput');
+        const daysCountText = document.getElementById('daysCountText');
+        const groomingCountText = document.getElementById('groomingCountText');
+        const summaryDays = document.getElementById('summaryDays');
+        const summaryGrooming = document.getElementById('summaryGrooming');
+        const summaryStayPrice = document.getElementById('summaryStayPrice');
+        const summaryGroomingPrice = document.getElementById('summaryGroomingPrice');
+        const grandTotalPrice = document.getElementById('grandTotalPrice');
+        const discountNotice = document.getElementById('discountNotice');
+        const waCalcBtn = document.getElementById('waCalcBtn');
+
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+        }
+
+        function setPreset(type) {
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.classList.remove('border-sky-brand', 'bg-sky-light', 'text-sky-brand');
+                btn.classList.add('border-slate-300');
+            });
+
+            if (type === 'daily') {
+                daysInput.value = 3;
+                groomingInput.value = 0;
+                document.getElementById('btn-daily').classList.add('border-sky-brand', 'bg-sky-light', 'text-sky-brand');
+            } else if (type === 'weekly') {
+                daysInput.value = 7;
+                groomingInput.value = 1;
+                document.getElementById('btn-weekly').classList.add('border-sky-brand', 'bg-sky-light', 'text-sky-brand');
+            } else if (type === 'monthly') {
+                daysInput.value = 30;
+                groomingInput.value = 4;
+                document.getElementById('btn-monthly').classList.add('border-sky-brand', 'bg-sky-light', 'text-sky-brand');
+            }
+            updateCalculator();
+        }
+
+        function changeGrooming(delta) {
+            let val = parseInt(groomingInput.value) || 0;
+            val = Math.max(0, Math.min(15, val + delta));
+            groomingInput.value = val;
+            updateCalculator();
+        }
+
+        function updateCalculator() {
+            const days = parseInt(daysInput.value) || 1;
+            const groomingSessions = parseInt(groomingInput.value) || 0;
+
+            daysCountText.innerText = days + " Hari";
+            groomingCountText.innerText = groomingSessions + " Sesi";
+
+            let stayCost = 0;
+            let isMonthlyPromo = false;
+
+            // Pricing logic matching prompt exact numbers:
+            // 1 Day = Rp 90.000
+            // 7 Days = Rp 630.000
+            // 30 Days = Rp 2.100.000 (Special monthly discount)
+            if (days >= 30) {
+                isMonthlyPromo = true;
+                const months = Math.floor(days / 30);
+                const remainingDays = days % 30;
+                stayCost = (months * 2100000) + (remainingDays * 90000);
+            } else {
+                stayCost = days * 90000;
+            }
+
+            const groomingCost = groomingSessions * 45000;
+            const total = stayCost + groomingCost;
+
+            summaryDays.innerText = days + " Hari";
+            summaryGrooming.innerText = groomingSessions + " Sesi";
+            summaryStayPrice.innerText = formatRupiah(stayCost);
+            summaryGroomingPrice.innerText = formatRupiah(groomingCost);
+            grandTotalPrice.innerText = formatRupiah(total);
+
+            if (isMonthlyPromo) {
+                discountNotice.classList.remove('hidden');
+            } else {
+                discountNotice.classList.add('hidden');
+            }
+
+            // Update WA button text & link
+            const waText = encodeURIComponent(`Halo PawCare Stay Sinjai, saya ingin memesan penitipan hewan dengan rincian hasil kalkulator:\n- Durasi: ${days} Hari\n- Grooming: ${groomingSessions} Sesi\n- Estimasi Biaya: ${formatRupiah(total)}`);
+            waCalcBtn.href = `https://wa.me/6288245836604?text=${waText}`;
+        }
+
+        // Initialize calculator on page load
+        updateCalculator();
+
+        // --- Article Modal Functions ---
+        function openArticle(title, content) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerHTML = content;
+            const modal = document.getElementById('articleModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeArticleModal() {
+            const modal = document.getElementById('articleModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close modal when clicking background
+        document.getElementById('articleModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('articleModal')) {
+                closeArticleModal();
+            }
+        });
+
+        // --- Quick WhatsApp Form Handler ---
+        function sendBookingWA(event) {
+            event.preventDefault();
+            const name = document.getElementById('ownerName').value;
+            const petType = document.getElementById('petType').value;
+            const startDate = document.getElementById('startDate').value;
+            const duration = document.getElementById('durationSelect').value;
+            const grooming = document.getElementById('groomingAddon').value;
+            const notes = document.getElementById('notes').value;
+
+            const text = `Halo PawCare Stay, saya ingin reservasi tempat penitipan hewan:\n` +
+                         `• Nama Pemilik: ${name}\n` +
+                         `• Jenis Hewan: ${petType}\n` +
+                         `• Tanggal Check-In: ${startDate}\n` +
+                         `• Rencana Durasi: ${duration}\n` +
+                         `• Opsi Grooming: ${grooming}\n` +
+                         `• Catatan Khusus: ${notes || '-'}`;
+
+            window.open(`https://wa.me/6288245836604?text=${encodeURIComponent(text)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
